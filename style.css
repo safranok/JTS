@@ -2289,6 +2289,215 @@ p {
     100% { transform: translateY(0); opacity: 1; }
 }
 
+/* --- 6. ADMIN CONSOLE STYLES --- */
+.admin-section {
+    padding: var(--spacing-lg) 0 var(--spacing-xl);
+    background-color: var(--color-bg-light);
+    min-height: calc(100vh - 80px - 350px);
+}
+
+.admin-header-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--border-radius-md);
+    border: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-actions-bar {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.admin-stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.admin-stat-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease;
+}
+
+.admin-stat-card:hover {
+    transform: translateY(-3px);
+}
+
+.stat-mini-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-primary-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-size: 1.3rem;
+}
+
+.stat-mini-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.stat-mini-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--color-charcoal-muted);
+}
+
+.stat-mini-info h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    margin: 0;
+}
+
+.admin-table-wrapper {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    overflow-x: auto;
+    width: 100%;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.admin-table th {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: 600;
+    padding: 1rem 1.2rem;
+    white-space: nowrap;
+}
+
+.admin-table td {
+    padding: 1.2rem;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: top;
+    color: var(--color-charcoal);
+}
+
+.admin-table tbody tr:nth-child(even) {
+    background-color: var(--color-bg-light);
+}
+
+.admin-table tbody tr:hover {
+    background-color: rgba(45, 106, 79, 0.04);
+}
+
+.empty-table-msg {
+    text-align: center !important;
+    padding: 3rem !important;
+    color: var(--color-charcoal-muted);
+    font-style: italic;
+}
+
+.lead-time {
+    font-size: 0.8rem;
+    color: var(--color-charcoal-muted);
+    white-space: nowrap;
+}
+
+.lead-name {
+    font-size: 0.95rem;
+    color: var(--color-primary);
+}
+
+.lead-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.contact-email-row, .contact-phone-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.contact-email-row a {
+    color: var(--color-primary-light);
+    text-decoration: none;
+}
+
+.contact-email-row a:hover {
+    text-decoration: underline;
+}
+
+.lead-city {
+    background-color: #e9ecef;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-charcoal);
+}
+
+.lead-interest-badge {
+    display: inline-block;
+    background-color: rgba(15, 58, 32, 0.1);
+    color: var(--color-primary);
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.lead-product-sub {
+    font-size: 0.8rem;
+    color: var(--color-gold-hover);
+    margin-top: 0.3rem;
+    font-weight: 600;
+}
+
+.lead-units-col {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--color-primary-dark);
+}
+
+.lead-details-bubble {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--color-charcoal-light);
+    background-color: var(--color-bg-light);
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    max-width: 250px;
+    border-left: 3px solid var(--color-primary);
+}
+
+/* Animations on Admin load */
+#page-admin.page-wrapper.active .admin-header-card,
+#page-admin.page-wrapper.active .admin-stats-container,
+#page-admin.page-wrapper.active .admin-table-wrapper {
+    animation: ty-slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* --- RESPONSIVE MEDIA QUERIES --- */
 
 /* Desktop & Larger Screens (High resolution optimizations) */
@@ -2509,4 +2718,111 @@ p {
     .thankyou-actions .btn {
         width: 100%;
     }
+}
+
+/* --- CONTACT FORM CUSTOM VALIDATION & ERROR STYLING --- */
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group textarea.invalid {
+    border-color: #E74C3C !important;
+    background-color: rgba(231, 76, 60, 0.02) !important;
+}
+
+.form-group input.invalid:focus,
+.form-group select.invalid:focus,
+.form-group textarea.invalid:focus {
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15) !important;
+}
+
+.form-group .error-message {
+    color: #E74C3C;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.35rem;
+    display: none;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+.form-group.has-error .error-message {
+    display: block;
+}
+
+/* --- ADMIN LOGIN CARD & ACTIONS STYLING --- */
+.admin-login-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 3.5rem;
+    box-shadow: var(--shadow-premium);
+    max-width: 480px;
+    margin: 4rem auto;
+    text-align: center;
+    animation: ty-slide-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.login-icon-ring {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: rgba(15, 58, 32, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: var(--color-primary);
+    font-size: 1.6rem;
+}
+
+.admin-login-card h2 {
+    color: var(--color-primary);
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+}
+
+.admin-login-card p {
+    font-size: 0.9rem;
+    color: var(--color-charcoal-muted);
+    margin-bottom: 2rem;
+}
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    width: 100%;
+    padding-right: 3rem !important;
+}
+
+.btn-toggle-password {
+    position: absolute;
+    right: 15px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-charcoal-muted);
+    font-size: 1.1rem;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-fast);
+}
+
+.btn-toggle-password:hover {
+    color: var(--color-primary);
+}
+
+/* Wrong password shake animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-8px); }
+    40%, 80% { transform: translateX(8px); }
+}
+
+.shake {
+    animation: shake 0.4s ease-in-out;
 }

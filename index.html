@@ -526,15 +526,17 @@
                         <h3>Request Consultation & Bulk Quote</h3>
                         <p class="form-sub">Fill out the form below, and an ergonomic consultant will respond within 2 business hours.</p>
                         
-                        <form id="corporate-contact-form" onsubmit="handleContactSubmit(event)">
+                        <form id="corporate-contact-form" onsubmit="handleContactSubmit(event)" novalidate>
                             <div class="form-row">
                                 <div class="form-group">
                                     <label for="contact-name">Full Name <span class="required">*</span></label>
                                     <input type="text" id="contact-name" name="name" placeholder="John Doe" required>
+                                    <span class="error-message" id="error-contact-name">Please enter your full name (minimum 2 characters, letters only).</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-email">Corporate Email <span class="required">*</span></label>
                                     <input type="email" id="contact-email" name="email" placeholder="john@company.com" required>
+                                    <span class="error-message" id="error-contact-email">Please enter a valid email address (e.g. name@company.com).</span>
                                 </div>
                             </div>
 
@@ -542,6 +544,7 @@
                                 <div class="form-group">
                                     <label for="contact-phone">Phone Number <span class="required">*</span></label>
                                     <input type="tel" id="contact-phone" name="phone" placeholder="+91 XXXXX XXXXX" required>
+                                    <span class="error-message" id="error-contact-phone">Please enter a valid 10-digit Indian phone number.</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-interest">I am interested in <span class="required">*</span></label>
@@ -552,6 +555,20 @@
                                         <option value="retail-home-office">Premium Single Office / Home Setups</option>
                                         <option value="custom-solution">Bespoke Design / Special Customizations</option>
                                     </select>
+                                    <span class="error-message" id="error-contact-interest">Please select your primary interest.</span>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contact-city">City <span class="required">*</span></label>
+                                    <input type="text" id="contact-city" name="city" placeholder="e.g. Bangalore" required>
+                                    <span class="error-message" id="error-contact-city">Please enter your city name (minimum 2 characters, letters only).</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-units">Number of Units Needed <span class="required">*</span></label>
+                                    <input type="number" id="contact-units" name="units" min="1" placeholder="e.g. 5" required>
+                                    <span class="error-message" id="error-contact-units">Please enter a valid number of units (1 or more).</span>
                                 </div>
                             </div>
 
@@ -722,6 +739,101 @@
             </section>
         </div>
 
+        <!-- 6. ADMIN DASHBOARD PAGE -->
+        <div id="page-admin" class="page-wrapper">
+            <section class="admin-section">
+                <!-- 6A. ADMIN LOGIN VIEW -->
+                <div class="container" id="admin-login-container">
+                    <div id="admin-login-card" class="admin-login-card">
+                        <div class="login-icon-ring">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h2>Authorization Required</h2>
+                        <p>Please enter the administrative password to access the inquiry database.</p>
+                        <form id="admin-login-form" onsubmit="handleAdminLogin(event)" novalidate>
+                            <div class="form-group">
+                                <label for="admin-password">Password</label>
+                                <div class="password-input-wrapper">
+                                    <input type="password" id="admin-password" placeholder="••••••••••••" required>
+                                    <button type="button" class="btn-toggle-password" onclick="togglePasswordVisibility('admin-password')" aria-label="Toggle password visibility">
+                                        <i class="fa-regular fa-eye"></i>
+                                    </button>
+                                </div>
+                                <span class="error-message" id="admin-login-error">Incorrect password. Please try again.</span>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full-width">
+                                <span>Unlock Console</span>
+                                <i class="fa-solid fa-key"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 6B. ADMIN DASHBOARD VIEW (HIDDEN BY DEFAULT) -->
+                <div class="container" id="admin-dashboard-container" style="display: none;">
+                    <div class="admin-header-card">
+                        <div class="admin-header-title">
+                            <span class="sub-heading">Corporate Lead Management Console</span>
+                            <h1>Inquiry Submissions Database</h1>
+                            <div class="heading-line"></div>
+                        </div>
+                        <div class="admin-actions-bar">
+                            <button class="btn btn-primary btn-sm" onclick="exportLeadsToCSV()">
+                                <i class="fa-solid fa-file-excel"></i> Export to CSV
+                            </button>
+                            <button class="btn btn-secondary btn-sm" onclick="loadSampleLeads()">
+                                <i class="fa-solid fa-circle-plus"></i> Load Sample Leads
+                            </button>
+                            <button class="btn btn-outline btn-sm" onclick="clearAllLeads()">
+                                <i class="fa-solid fa-trash-can"></i> Clear All
+                            </button>
+                            <button class="btn btn-outline btn-sm" onclick="handleAdminLogout()" style="border-color: #E74C3C; color: #E74C3C;">
+                                <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-stats-container">
+                        <div class="admin-stat-card">
+                            <div class="stat-mini-icon"><i class="fa-solid fa-users"></i></div>
+                            <div class="stat-mini-info">
+                                <span class="stat-mini-label">Total Leads</span>
+                                <h3 id="lead-count-total">0</h3>
+                            </div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="stat-mini-icon"><i class="fa-solid fa-cubes"></i></div>
+                            <div class="stat-mini-info">
+                                <span class="stat-mini-label">Total Units Requested</span>
+                                <h3 id="lead-count-units">0</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Date & Time</th>
+                                    <th>Full Name</th>
+                                    <th>Contact Details</th>
+                                    <th>City</th>
+                                    <th>Product / Interest</th>
+                                    <th>Units</th>
+                                    <th>Other Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-leads-tbody">
+                                <tr>
+                                    <td colspan="7" class="empty-table-msg">No submissions found. Submit the contact form to capture leads or click "Load Sample Leads".</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
     </main>
 
     <!-- Product Details Modal (Quick View) -->
@@ -791,6 +903,7 @@
                     <li><a href="#products" data-page="products">Products</a></li>
                     <li><a href="#about" data-page="about">About Us</a></li>
                     <li><a href="#contact" data-page="contact">Contact</a></li>
+                    <li><a href="#admin" data-page="admin"><i class="fa-solid fa-lock" style="font-size: 0.75rem; margin-right: 0.25rem; opacity: 0.7;"></i> Admin Console</a></li>
                 </ul>
             </div>
 
