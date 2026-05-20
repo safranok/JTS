@@ -334,12 +334,6 @@ window.handleContactSubmit = function(event) {
     
     const form = event.target;
     const submitBtn = form.querySelector('button[type="submit"]');
-    const statusAlert = document.getElementById('form-status');
-    
-    // Form fields
-    const name = document.getElementById('contact-name').value;
-    const email = document.getElementById('contact-email').value;
-    const product = document.getElementById('contact-product').value;
     
     // Play button loading state
     const originalText = submitBtn.innerHTML;
@@ -351,22 +345,13 @@ window.handleContactSubmit = function(event) {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
         
-        if (statusAlert) {
-            statusAlert.className = 'form-status-alert success';
-            let successMessage = `Thank you, ${name}! Your corporate request has been logged successfully. `;
-            if (product) {
-                successMessage += `An ergonomic workspace expert will send a bulk custom quote for the "${product}" to ${email} within 2 business hours.`;
-            } else {
-                successMessage += `An ergonomic specialist will reach out to ${email} within 2 business hours to schedule your office consultation.`;
-            }
-            statusAlert.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${successMessage}`;
-            statusAlert.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            
-            // Reset form
-            form.reset();
-            const selectContainer = document.getElementById('product-quote-container');
-            if (selectContainer) selectContainer.style.display = 'none';
-        }
+        // Reset form
+        form.reset();
+        const selectContainer = document.getElementById('product-quote-container');
+        if (selectContainer) selectContainer.style.display = 'none';
+        
+        // Redirect to the Thank You confirmation page
+        window.location.hash = '#thankyou';
     }, 1200);
 };
 

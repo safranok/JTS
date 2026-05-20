@@ -2098,6 +2098,197 @@ p {
 }
 
 
+/* --- 5. THANK YOU PAGE STYLES --- */
+.thankyou-section {
+    padding: var(--spacing-xl) 0;
+    background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-white) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 80px - 350px);
+}
+
+.thankyou-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-lg);
+    padding: 3.5rem;
+    box-shadow: var(--shadow-premium);
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Success Checkmark Icon Animations */
+.thankyou-icon-ring {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: var(--color-primary-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    position: relative;
+    animation: pulse-ring 2s cubic-bezier(0.215, 0.610, 0.355, 1) infinite;
+}
+
+.thankyou-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 1.8rem;
+    box-shadow: 0 4px 10px rgba(15, 58, 32, 0.2);
+    animation: scale-up-check 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.thankyou-check {
+    animation: draw-check 0.4s ease-out 0.4s both;
+}
+
+/* Headings & Text */
+.thankyou-heading {
+    color: var(--color-primary);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.thankyou-subheading {
+    font-family: var(--font-heading);
+    color: var(--color-charcoal-light);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+
+.thankyou-body {
+    color: var(--color-charcoal-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.2rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Info Card */
+.thankyou-info-card {
+    background-color: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-md);
+    padding: 1.8rem;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.thankyou-info-row {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.ty-info-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.ty-info-icon i {
+    color: var(--color-primary-light);
+    font-size: 1.1rem;
+}
+
+.ty-info-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.ty-label {
+    font-size: 0.75rem;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-charcoal-muted);
+    font-weight: 600;
+}
+
+.ty-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.ty-email {
+    color: var(--color-primary-light);
+    transition: var(--transition-fast);
+}
+
+.ty-email:hover {
+    color: var(--color-gold-hover);
+    text-decoration: underline;
+}
+
+.thankyou-info-divider {
+    height: 1px;
+    background-color: var(--color-border);
+    margin: 1.2rem 0;
+}
+
+/* CTA Buttons Layout */
+.thankyou-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.thankyou-actions .btn {
+    min-width: 200px;
+}
+
+/* Keyframe Animations */
+@keyframes pulse-ring {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(15, 58, 32, 0.15); }
+    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(15, 58, 32, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(15, 58, 32, 0); }
+}
+
+@keyframes scale-up-check {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes draw-check {
+    0% { opacity: 0; transform: scale(0.6); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Animation on Page Wrapper load (SPA Router) */
+#page-thankyou.page-wrapper.active .thankyou-card {
+    animation: ty-slide-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ty-slide-up {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
 /* --- RESPONSIVE MEDIA QUERIES --- */
 
 /* Desktop & Larger Screens (High resolution optimizations) */
@@ -2279,6 +2470,10 @@ p {
         flex-direction: column;
         text-align: center;
     }
+    
+    .thankyou-card {
+        padding: 2.5rem 1.5rem;
+    }
 }
 
 /* Extra small devices (Landscape & Portrait) */
@@ -2304,5 +2499,14 @@ p {
     .filter-btn {
         width: 100%;
         border-radius: var(--border-radius-sm);
+    }
+    
+    .thankyou-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .thankyou-actions .btn {
+        width: 100%;
     }
 }
