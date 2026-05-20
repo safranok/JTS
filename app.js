@@ -464,6 +464,25 @@ window.handleContactSubmit = function(event) {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing inquiry...';
     
+    // Build the lead object (used for both storage and email)
+    const interestLabel = interestSelect.options[interestSelect.selectedIndex].text;
+    const productLabel = product && product !== '' ? product : interestLabel;
+    const timestamp = new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+    const firstName = name.split(' ')[0];
+    
+    // Fire both automated emails instantly (non-blocking)
+    sendAutomatedEmails({
+        first_name: firstName,
+        name: name,
+        email: email,
+        phone: phone,
+        product: productLabel,
+        city: city,
+        units: units,
+        notes: message || 'N/A',
+        timestamp: timestamp
+    });
+    
     // Mock network request delay (1.2 seconds)
     setTimeout(() => {
         submitBtn.disabled = false;
@@ -472,17 +491,17 @@ window.handleContactSubmit = function(event) {
         // Save submission to LocalStorage
         const leads = JSON.parse(localStorage.getItem('worknest_leads')) || [];
         const newLead = {
-            timestamp: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
+            timestamp: timestamp,
             name: name,
             email: email,
             phone: phone,
-            interest: interestSelect.options[interestSelect.selectedIndex].text,
+            interest: interestLabel,
             product: product || 'N/A',
             city: city,
             units: parseInt(units, 10) || 1,
             message: message || 'N/A'
         };
-        leads.unshift(newLead); // Add new lead to the beginning
+        leads.unshift(newLead);
         localStorage.setItem('worknest_leads', JSON.stringify(leads));
         
         // Reset form
@@ -494,6 +513,108 @@ window.handleContactSubmit = function(event) {
         window.location.hash = '#thankyou';
     }, 1200);
 };
+
+/* ==========================================
+   EMAIL AUTOMATION — DUAL SEND (EmailJS)
+   ========================================== */
+
+/**
+ * Sends two automated emails on every form submission:
+ *   1. Customer acknowledgement → customer's email
+ *   2. Team notification        → team@worknest.in
+ *
+ * HOW TO ACTIVATE:
+ *   1. Create a free account at https://www.emailjs.com
+ *   2. Connect your Gmail/Outlook (Email Services tab → Add Service)
+ *   3. Create two Email Templates (see walkthrough.md for exact content to paste)
+ *   4. Replace the three PLACEHOLDER strings below with your real IDs
+ */
+function sendAutomatedEmails(data) {
+    // ──────────────────────────────────────────────────────────────
+    // REPLACE THESE THREE VALUES WITH YOUR REAL EMAILJS CREDENTIALS
+    const EMAILJS_SERVICE_ID    = 'service_ca4o69v';
+    const TEMPLATE_CUSTOMER_ID  = 'template_r2ymsma';
+    const TEMPLATE_TEAM_ID      = 'template_oi1u5of';
+    // ──────────────────────────────────────────────────────────────
+
+    // Guard: skip silently if EmailJS is not loaded or credentials not set
+    if (typeof emailjs === 'undefined') {
+        console.warn('EmailJS not loaded. Emails not sent.');
+        return;
+    }
+    if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID') {
+        console.info('EmailJS credentials not configured yet. See walkthrough.md for setup guide.');
+        return;
+    }
+
+    // --- AUTOMATION 1: Customer Acknowledgement ---
+    // Mapping multiple variations to be 100% robust against any template variable settings
+    const customerParams = {
+        to_email:       data.email, // Backward compatibility
+        email:          data.email, // Safran's template: "To Email = {{email}}"
+        user_email:     data.email, // Fallback common standard
+        customer_email: data.email, // Fallback common standard
+        reply_to:       data.email,
+        first_name:     data.first_name,
+        product:        data.product,
+    };
+
+    // --- AUTOMATION 2: Team Notification ---
+    const teamParams = {
+        to_email:  'safranok123@gmail.com',
+        name:      data.name,
+        email:     data.email,
+        phone:     data.phone,
+        product:   data.product,
+        city:      data.city,
+        units:     data.units,
+        notes:     data.notes,
+        timestamp: data.timestamp,
+    };
+
+    // --- DEBUGGING LOGS ---
+    console.group('🚀 WorkNest Interiors - Email Automation Debugger');
+    console.info('Dispatching automated emails...');
+    console.info('1. Customer Acknowledgement Payload:', customerParams);
+    console.info('2. Team Notification Payload:', teamParams);
+    console.groupEnd();
+
+    // Fire both emails simultaneously with individual success/failure console outputs
+    const sendCustomer = emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_CUSTOMER_ID, customerParams)
+        .then((response) => {
+            console.log('✅ Customer auto-reply sent successfully! Response:', response.status, response.text);
+            return response;
+        })
+        .catch((err) => {
+            console.error('❌ Customer auto-reply FAILED to send. Error details:', err);
+            throw err;
+        });
+
+    const sendTeam = emailjs.send(EMAILJS_SERVICE_ID, TEMPLATE_TEAM_ID, teamParams)
+        .then((response) => {
+            console.log('✅ Team notification sent successfully! Response:', response.status, response.text);
+            return response;
+        })
+        .catch((err) => {
+            console.error('❌ Team notification FAILED to send. Error details:', err);
+            throw err;
+        });
+
+    // Use Promise.allSettled so failure of one email does not stop the other or the website SPA flow
+    Promise.allSettled([sendCustomer, sendTeam])
+    .then((results) => {
+        console.group('📊 WorkNest Dispatch Summary');
+        results.forEach((res, index) => {
+            const label = index === 0 ? 'Customer Auto-reply' : 'Team Notification';
+            if (res.status === 'fulfilled') {
+                console.log(`👍 ${label}: DELIVERED`);
+            } else {
+                console.warn(`👎 ${label}: FAILED`, res.reason);
+            }
+        });
+        console.groupEnd();
+    });
+}
 
 /* ==========================================
    7. INTERACTIVE FAQ ACCORDION
