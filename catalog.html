@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkNest Interiors — Product Catalog 2024</title>
+    <meta name="description" content="Premium ergonomic office furniture product catalog. Explore ErgoDesk Pro, StandDesk Elite, AirMesh Chair, LumbarPro Chair, and accessories.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom Catalog CSS -->
+    <link rel="stylesheet" href="catalog-style.css">
+</head>
+<body>
+
+    <!-- Interactive Top Bar Control Banner (Screen Only) -->
+    <header class="catalog-header-bar">
+        <a href="index.html" class="catalog-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>WorkNest <span>Interiors</span></span>
+        </a>
+        <div class="catalog-controls">
+            <button class="btn-catalog btn-catalog-outline" onclick="toggleBookSpread()" id="spread-toggle-btn">
+                <i class="fa-solid fa-book-open"></i> Book View
+            </button>
+            <button class="btn-catalog btn-catalog-outline" onclick="window.print()">
+                <i class="fa-solid fa-file-pdf"></i> Export to PDF / Print
+            </button>
+            <a href="index.html" class="btn-catalog btn-catalog-primary">
+                <i class="fa-solid fa-arrow-left"></i> Back to Website
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Catalog Page Canvas -->
+    <main class="catalog-container" id="catalog-canvas">
+
+        <!-- ================= PAGE 1: COVER PAGE ================= -->
+        <section class="catalog-sheet cover-page">
+            <div class="cover-header">
+                <div class="cover-brand">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                    <span>WorkNest</span>
+                </div>
+                <div class="cover-brand-sub">Interiors</div>
+                <div class="cover-divider"></div>
+            </div>
+
+            <div class="cover-title-group">
+                <h1 class="cover-title">Product Catalog<br>2024</h1>
+                <p class="cover-subtitle">Premium Ergonomic Workspaces</p>
+            </div>
+
+            <div class="cover-hero-box">
+                <img src="assets/ergodesk_pro.png" alt="WorkNest Interiors Premium Workspace Hero">
+            </div>
+
+            <div class="cover-footer">
+                <div class="cover-meta-item">
+                    <span class="cover-meta-label">Prepared For</span>
+                    <p class="cover-meta-value">Corporate Fitouts & Architects</p>
+                </div>
+                <div class="cover-meta-item">
+                    <span class="cover-meta-label">Publish Date</span>
+                    <p class="cover-meta-value" id="current-publish-date">May 21, 2026</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: ERGODESK PRO ================= -->
+        <section class="catalog-sheet">
+            <div class="product-showcase-layout">
+                <div class="page-header-stamp">
+                    <span class="stamp-brand">WorkNest <span>Interiors</span></span>
+                    <span class="stamp-category">Office Desks</span>
+                </div>
+
+                <div class="product-split-grid">
+                    <div class="product-image-frame">
+                        <img src="assets/ergodesk_pro.png" alt="ErgoDesk Pro">
+                    </div>
+                    <div class="product-detail-panel">
+                        <h2 class="product-title">ErgoDesk Pro</h2>
+                        <div class="product-price-badge">₹18,500</div>
+                        
+                        <h3 class="specs-title"><i class="fa-solid fa-list-check"></i> Key Specifications</h3>
+                        <ul class="specs-list">
+                            <li class="spec-bullet">Premium dual-motor system for smooth, quiet height adjustments</li>
+                            <li class="spec-bullet">Durable wood-grain laminate top with neat built-in grommets</li>
+                            <li class="spec-bullet">Solid industrial-grade steel frame supporting up to 120 kg</li>
+                            <li class="spec-bullet">Anti-collision safety sensors to prevent accidental pinches</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="benefit-statement-container">
+                        <p class="benefit-statement-text">“Elevate your work posture and corporate performance with effortless, silent sit-to-stand transitions designed for high-stress workspaces.”</p>
+                    </div>
+                    <div class="page-footer-stamp">
+                        <span>WorkNest Interiors • Product Brochure 2024</span>
+                        <span class="catalog-pagination">Page 2 of 8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: STANDDESK ELITE ================= -->
+        <section class="catalog-sheet">
+            <div class="product-showcase-layout">
+                <div class="page-header-stamp">
+                    <span class="stamp-brand">WorkNest <span>Interiors</span></span>
+                    <span class="stamp-category">Smart Desks</span>
+                </div>
+
+                <div class="product-split-grid">
+                    <div class="product-image-frame">
+                        <img src="assets/standdesk_elite.png" alt="StandDesk Elite">
+                    </div>
+                    <div class="product-detail-panel">
+                        <h2 class="product-title">StandDesk Elite</h2>
+                        <div class="product-price-badge">₹24,000</div>
+                        
+                        <h3 class="specs-title"><i class="fa-solid fa-list-check"></i> Key Specifications</h3>
+                        <ul class="specs-list">
+                            <li class="spec-bullet">Advanced digital keypad with 4 memory height presets</li>
+                            <li class="spec-bullet">Whisper-quiet motorized adjustment at less than 45 decibels</li>
+                            <li class="spec-bullet">Premium solid natural oak finish with rounded safety edges</li>
+                            <li class="spec-bullet">Under-desk structural steel cable organizing tray</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="benefit-statement-container">
+                        <p class="benefit-statement-text">“Create a fluid, active, and high-energy workspace that boosts physical circulation, alertness, and mental focus.”</p>
+                    </div>
+                    <div class="page-footer-stamp">
+                        <span>WorkNest Interiors • Product Brochure 2024</span>
+                        <span class="catalog-pagination">Page 3 of 8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: AIRMESH CHAIR ================= -->
+        <section class="catalog-sheet">
+            <div class="product-showcase-layout">
+                <div class="page-header-stamp">
+                    <span class="stamp-brand">WorkNest <span>Interiors</span></span>
+                    <span class="stamp-category">Active Seating</span>
+                </div>
+
+                <div class="product-split-grid">
+                    <div class="product-image-frame">
+                        <img src="assets/airmesh_chair.png" alt="AirMesh Chair">
+                    </div>
+                    <div class="product-detail-panel">
+                        <h2 class="product-title">AirMesh Chair</h2>
+                        <div class="product-price-badge">₹9,200</div>
+                        
+                        <h3 class="specs-title"><i class="fa-solid fa-list-check"></i> Key Specifications</h3>
+                        <ul class="specs-list">
+                            <li class="spec-bullet">High-tensile premium breathable Korean mesh backrest</li>
+                            <li class="spec-bullet">Self-adjusting synchro-tilt mechanism with 3 tilt locks</li>
+                            <li class="spec-bullet">Adjustable 3D armrests (height, depth, and pivot) with PU pads</li>
+                            <li class="spec-bullet">Class-4 gas lift system with smooth, silent nylon casters</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="benefit-statement-container">
+                        <p class="benefit-statement-text">“Experience weightless, fresh, and supportive structural alignment tailored for extended creative and logical focus hours.”</p>
+                    </div>
+                    <div class="page-footer-stamp">
+                        <span>WorkNest Interiors • Product Brochure 2024</span>
+                        <span class="catalog-pagination">Page 4 of 8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: LUMBARPRO CHAIR ================= -->
+        <section class="catalog-sheet">
+            <div class="product-showcase-layout">
+                <div class="page-header-stamp">
+                    <span class="stamp-brand">WorkNest <span>Interiors</span></span>
+                    <span class="stamp-category">Ergonomic Seating</span>
+                </div>
+
+                <div class="product-split-grid">
+                    <div class="product-image-frame">
+                        <img src="assets/lumbarpro_chair.png" alt="LumbarPro Chair">
+                    </div>
+                    <div class="product-detail-panel">
+                        <h2 class="product-title">LumbarPro Chair</h2>
+                        <div class="product-price-badge">₹12,500</div>
+                        
+                        <h3 class="specs-title"><i class="fa-solid fa-list-check"></i> Key Specifications</h3>
+                        <ul class="specs-list">
+                            <li class="spec-bullet">Adaptive orthopedically-aligned lumbosacral support</li>
+                            <li class="spec-bullet">High-density molded memory foam seat cushion with luxury fabric</li>
+                            <li class="spec-bullet">Fully adjustable headrest for neck tension relief</li>
+                            <li class="spec-bullet">High-strength polished aluminum wheelbase for elite durability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="benefit-statement-container">
+                        <p class="benefit-statement-text">“Relieve spine pressure permanently with advanced, posture-responsive support engineered for total tasking endurance.”</p>
+                    </div>
+                    <div class="page-footer-stamp">
+                        <span>WorkNest Interiors • Product Brochure 2024</span>
+                        <span class="catalog-pagination">Page 5 of 8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 6: MONITOR RISER XL ================= -->
+        <section class="catalog-sheet">
+            <div class="product-showcase-layout">
+                <div class="page-header-stamp">
+                    <span class="stamp-brand">WorkNest <span>Interiors</span></span>
+                    <span class="stamp-category">Workspace Accessories</span>
+                </div>
+
+                <div class="product-split-grid">
+                    <div class="product-image-frame">
+                        <img src="assets/monitor_riser.png" alt="Monitor Riser XL">
+                    </div>
+                    <div class="product-detail-panel">
+                        <h2 class="product-title">Monitor Riser XL</h2>
+                        <div class="product-price-badge">₹2,800</div>
+                        
+                        <h3 class="specs-title"><i class="fa-solid fa-list-check"></i> Key Specifications</h3>
+                        <ul class="specs-list">
+                            <li class="spec-bullet">Premium hand-crafted solid walnut top panel finish</li>
+                            <li class="spec-bullet">Sturdy powder-coated heavy steel base columns</li>
+                            <li class="spec-bullet">Integrated organizer slots for phones, tablets, and pens</li>
+                            <li class="spec-bullet">Creates valuable under-riser space to store keyboards</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="benefit-statement-container">
+                        <p class="benefit-statement-text">“Align your monitor to natural eye level to ease neck strain while adding sophisticated executive organization to your desk.”</p>
+                    </div>
+                    <div class="page-footer-stamp">
+                        <span>WorkNest Interiors • Product Brochure 2024</span>
+                        <span class="catalog-pagination">Page 6 of 8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 7: CABLEBOX ORGANIZER ================= -->
+        <section class="catalog-sheet">
+            <div class="product-showcase-layout">
+                <div class="page-header-stamp">
+                    <span class="stamp-brand">WorkNest <span>Interiors</span></span>
+                    <span class="stamp-category">Workspace Accessories</span>
+                </div>
+
+                <div class="product-split-grid">
+                    <div class="product-image-frame">
+                        <img src="assets/cablebox.png" alt="CableBox Organizer">
+                    </div>
+                    <div class="product-detail-panel">
+                        <h2 class="product-title">CableBox Organizer</h2>
+                        <div class="product-price-badge">₹1,200</div>
+                        
+                        <h3 class="specs-title"><i class="fa-solid fa-list-check"></i> Key Specifications</h3>
+                        <ul class="specs-list">
+                            <li class="spec-bullet">Flame-retardant premium ABS structure for electrical safety</li>
+                            <li class="spec-bullet">Dual side-exit cord slots for easy input/output cable routing</li>
+                            <li class="spec-bullet">Minimalist wooden-texture aesthetic cover lid</li>
+                            <li class="spec-bullet">Conceals bulky power strips, surge protectors, and adapters</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="benefit-statement-container">
+                        <p class="benefit-statement-text">“Transform messy, hazardous desktop cable tangles into a clean, safe, and clutter-free minimalist haven.”</p>
+                    </div>
+                    <div class="page-footer-stamp">
+                        <span>WorkNest Interiors • Product Brochure 2024</span>
+                        <span class="catalog-pagination">Page 7 of 8</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 8: BACK COVER ================= -->
+        <section class="catalog-sheet back-cover-page">
+            <div class="back-cover-header">
+                <h2 class="back-cover-title">WorkNest Interiors</h2>
+                <div class="back-cover-divider"></div>
+                <p class="back-cover-subtitle">High-performance corporate furniture engineered for well-being and crafted for durability.</p>
+            </div>
+
+            <!-- Custom Quote CTA Block -->
+            <div class="back-cover-cta-block">
+                <h3>Ready to Transform Your Workspace?</h3>
+                <p>We work closely with builders, workspace designers, and companies to plan layouts and manufacture bulk custom solutions matching your exact brand requirements.</p>
+                <a href="index.html#contact" class="back-cover-cta-btn">Request a Custom Quote</a>
+            </div>
+
+            <!-- Direct Contact Coordinates -->
+            <div class="back-cover-details-grid">
+                <div class="contact-card-item">
+                    <div class="contact-card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+                    <div class="contact-card-info">
+                        <h4>Head Office</h4>
+                        <p>Bangalore, Karnataka, India</p>
+                    </div>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="contact-card-info">
+                        <h4>Email Inquiries</h4>
+                        <a href="mailto:info@worknest.in">info@worknest.in</a>
+                    </div>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-card-icon"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="contact-card-info">
+                        <h4>Instagram</h4>
+                        <a href="https://instagram.com/worknestinteriors" target="_blank">@worknestinteriors</a>
+                    </div>
+                </div>
+                <div class="contact-card-item">
+                    <div class="contact-card-icon"><i class="fa-solid fa-globe"></i></div>
+                    <div class="contact-card-info">
+                        <h4>Corporate Portal</h4>
+                        <a href="index.html">www.worknest.in</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-cover-footer">
+                <p>© 2026 <span>WorkNest Interiors</span>. All specifications are subject to customized modifications.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Logic (Screen Only) -->
+    <script>
+        // Set dynamic local publishing date on Cover
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateEl = document.getElementById('current-publish-date');
+            if (dateEl) {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const today = new Date();
+                dateEl.textContent = today.toLocaleDateString('en-US', options);
+            }
+        });
+
+        // Toggle Spread/Stacked viewing layout on screen
+        function toggleBookSpread() {
+            const canvas = document.getElementById('catalog-canvas');
+            const btn = document.getElementById('spread-toggle-btn');
+            
+            if (canvas.classList.contains('book-spread')) {
+                canvas.classList.remove('book-spread');
+                btn.innerHTML = '<i class="fa-solid fa-book-open"></i> Book View';
+            } else {
+                canvas.classList.add('book-spread');
+                btn.innerHTML = '<i class="fa-solid fa-list"></i> Stacked View';
+            }
+        }
+    </script>
+</body>
+</html>
